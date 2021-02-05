@@ -33,7 +33,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
         http.authorizeRequests().antMatchers("/api/security/**", "/api/usuarios/forgot_password", "/api/personas/buscar-por-email/{correo}").permitAll()
                 .antMatchers(HttpMethod.GET,"/verificarSesion").hasAnyRole("ADMIN", "USER")
                 .antMatchers(HttpMethod.GET, "/api/solicitudes", "/api/solicitudes/{id}").hasAnyRole("ADMIN", "USER")
-                .antMatchers(HttpMethod.GET, "/api/personas/", "/api/personas/puestos", "/api/archivos", "/api/archivos/tipoArchivos").hasRole("ADMIN")
+                .antMatchers(HttpMethod.GET, "/api/personas", "/api/personas/puestos", "/api/archivos", "/api/archivos/tipoArchivos").hasRole("ADMIN")
                 .antMatchers(HttpMethod.GET, "/api/personas/{id}", "/api/archivos/{id}", "/api/archivos/ver-archivo/{id}", "/api/personas/buscar-por-codEstudiante/{codigo}").hasRole("ADMIN")
                 .antMatchers(HttpMethod.POST, "/api/solicitudes", "/api/personas", "/api/archivos", "api/archivos/crear-con-file").hasRole("ADMIN")
                 .antMatchers(HttpMethod.PUT, "/api/solicitudes/{id}", "/api/archivos/{id}", "/api/personas/{id}", "/api/archivos/editar-con-file/{id}").hasRole("ADMIN")
