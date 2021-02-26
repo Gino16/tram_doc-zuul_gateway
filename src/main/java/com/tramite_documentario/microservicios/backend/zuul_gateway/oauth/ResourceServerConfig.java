@@ -30,12 +30,12 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/api/security/**", "/api/usuarios/forgot_password", "/api/personas/buscar-por-email/{correo}", "/api/solicitudes/exportar/{id}").permitAll()
+        http.authorizeRequests().antMatchers("/api/security/**", "/api/usuarios/forgot_password", "/api/solicitudes/exportar/{id}").permitAll()
                 .antMatchers(HttpMethod.GET,"/verificarSesion").hasAnyRole("ADMIN", "USER")
-                .antMatchers(HttpMethod.GET, "/api/solicitudes", "/api/solicitudes/{id}", "/api/archivos/{id}", "/api/archivos/ver-archivo/{id}").hasAnyRole("ADMIN", "USER")
-                .antMatchers(HttpMethod.GET, "/api/personas", "/api/personas/puestos", "/api/archivos", "/api/archivos/tipoArchivos").hasRole("ADMIN")
-                .antMatchers(HttpMethod.GET, "/api/personas/{id}", "/api/personas/buscar-por-codEstudiante/{codigo}").hasRole("ADMIN")
-                .antMatchers(HttpMethod.POST, "/api/solicitudes", "/api/personas", "/api/archivos", "/api/archivos/crear-con-file").hasRole("ADMIN")
+                .antMatchers(HttpMethod.GET, "/api/solicitudes", "/api/solicitudes/{id}", "/api/archivos/{id}", "/api/archivos/ver-archivo/{id}", "/api/archivos/enviar-archivo/{id}").hasAnyRole("ADMIN", "USER")
+                .antMatchers(HttpMethod.GET, "/api/personas", "/api/personas/puestos", "/api/archivos", "/api/archivos/tipoArchivos", "/api/archivos/archivos-sin-solicitud").hasRole("ADMIN")
+                .antMatchers(HttpMethod.GET, "/api/personas/{id}", "/api/personas/buscar-por-codEstudiante/{codigo}", "/api/personas/buscar-por-dni/{dniRuc}", "/api/personas/buscar-por-email/{correo}", "/api/personas/buscar-por-nombre/{nombre}", "/api/personas/buscar-por-apellido/{apellido}").hasRole("ADMIN")
+                .antMatchers(HttpMethod.POST, "/api/solicitudes", "/api/personas", "/api/archivos", "/api/archivos/crear-con-file" ).hasRole("ADMIN")
                 .antMatchers(HttpMethod.PUT, "/api/solicitudes/{id}", "/api/archivos/{id}", "/api/personas/{id}", "/api/archivos/editar-con-file/{id}", "/api/solicitudes/actualizar-estado/{idSolicitud}/estado/{idEstado}").hasRole("ADMIN")
                 .antMatchers(HttpMethod.DELETE, "/api/archivos/{id}", "/api/personas/{id}").hasRole("ADMIN")
                 .anyRequest().denyAll()
