@@ -34,7 +34,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
                 .antMatchers(HttpMethod.GET, "/verificarSesion").hasAnyRole("ADMIN", "USER")
                 .antMatchers(HttpMethod.PUT,  "/api/solicitudes/actualizar-estado/{idSolicitud}/estado/{idEstado}").hasAnyRole("ADMIN", "USER")
                 .antMatchers(HttpMethod.GET, "/api/solicitudes", "/api/solicitudes/{id}", "/api/archivos/{id}", "/api/archivos/ver-archivo/{id}", "/api/solicitudes/listar-estados/{idSolicitud}").hasAnyRole("ADMIN", "USER")
-                .antMatchers(HttpMethod.POST, "/api/archivos/enviar-archivo/{id}", "localhost:8090/api/solicitudes/firmar/**").hasAnyRole("ADMIN", "USER")
+                .antMatchers(HttpMethod.POST, "/api/archivos/enviar-archivo/{id}", "/api/solicitudes/firmar/**").hasAnyRole("ADMIN", "USER")
                 .antMatchers(HttpMethod.GET, "/api/personas", "/api/personas/puestos", "/api/archivos", "/api/archivos/tipoArchivos", "/api/archivos/archivos-sin-solicitud").hasRole("ADMIN")
                 .antMatchers(HttpMethod.GET, "/api/personas/{id}", "/api/personas/buscar-por-codEstudiante/{codigo}", "/api/personas/buscar-por-email/{correo}", "/api/personas/buscar-por-dni/{dniRuc}", "/api/personas/buscar-por-nombre/{nombre}", "/api/personas/buscar-por-apellido/{apellido}", "/api/solicitudes/exportar/{id}").hasRole("ADMIN")
                 .antMatchers(HttpMethod.POST, "/api/solicitudes", "/api/personas", "/api/archivos", "/api/archivos/crear-con-file").hasRole("ADMIN")
